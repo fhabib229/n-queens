@@ -79,12 +79,27 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      // Sum arrays of row index
+      // Use reduce to check the sum, if greater than 1, return true
+      // Otherwise return false
+      var sum = this.get(rowIndex).reduce(function(x, y) {
+        return x + y;
+      }, 0);
+      if (sum > 1) {
+        return true;
+      }
+      return false;
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      var hasConflict = false;
+      this.rows().forEach(function(row, index) {
+        if (row.reduce((x, y) => x + y) > 1) {
+          hasConflict = true;
+        }
+      });
+      return hasConflict;
     },
 
 
