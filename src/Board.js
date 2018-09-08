@@ -109,7 +109,16 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      var acc = [];
+      this.rows().forEach(function(row) {
+        acc.push(row[colIndex]);
+        console.log('column:' + row[colIndex]);
+      });
+      console.log(acc);
+    // if (acc.reduce((x, y) => x + y) > 1) {
+    //   return true;
+    // }
+    //   return false;
     },
 
     // test if any columns on this board contain conflicts
