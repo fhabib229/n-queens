@@ -115,10 +115,10 @@
         console.log('column:' + row[colIndex]);
       });
       console.log(acc);
-     if (acc.reduce((x, y) => x + y) > 1) {
-       return true;
-     }
-       return false;
+      if (acc.reduce((x, y) => x + y) > 1) {
+        return true;
+      }
+      return false;
     },
 
     // test if any columns on this board contain conflicts
@@ -126,19 +126,17 @@
       //have to use recursion to go through n column
       //recursion stop at last index ofrow
       var hasConflict = false;
-      var counter = this.rows().length -1;
-      var index = 0
-      while(counter !==0){
-      var acc = [];
-      this.rows().forEach(function(row){
-        acc.push(row[index]);
-      });
-      if(acc.reduce((x,y) => x+y) > 1){
-        hasConflict = true;
+      var counter = this.rows().length - 1;
+      var index = 0;
+      while (counter !== 0) {
+        var acc = [];
+        this.rows().forEach(row => acc.push(row[index]));
+        if (acc.reduce((x, y) => x + y) > 1) {
+          hasConflict = true;
+        }
+        counter--;
+        index++;
       }
-      counter--;
-      index++;
-    }
       return hasConflict;
     },
 
